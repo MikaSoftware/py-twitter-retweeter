@@ -9,12 +9,12 @@ from tweepy import OAuthHandler
 from tweepy import Stream
 
 
-# Load up the twitter authentication information from the 'secret.py' file
+# Load up the twitter authentication information from the 'secret_settings.py' file
 # if the user forgot to make when, then let them know and exist.
 try:
-    from secret import *
+    from secret_settings import *
 except ImportError:
-    print("You forgot to take the \"secret_example.py\" file, and rename it to \"secret.py\". Please do that before running this script. Also be sure that you fill the file in with your twitter credentials.")
+    print("You forgot to take the \"secret_settings_example.py\" file, and rename it to \"secret.py\". Please do that before running this script. Also be sure that you fill the file in with your twitter credentials.")
     sys.exit(-1)
 
 
@@ -66,7 +66,9 @@ class ListenerAndRetweeter(StreamListener):
                         print("Going to retweet", tweet_id)
                         self.api.retweet(tweet_id)
                     except Exception as e:
-                        pass # Do nothing essentially
+                        print("Skipping retweet", tweet_id, " because of error: ", str(e))
+                else:
+                    print("Skipping retweet", tweet_id, " because of bad word(s)")
 
     def on_data(self, json_string):
         json_arr  = json.loads(json_string)

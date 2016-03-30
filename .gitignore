@@ -153,4 +153,4 @@ target/
 # Important Note: Make sure this is the name of the virtualenv directory
 # that you set when you where setting up the project.
 *.cfg
-src/secret.py
+src/secret_settings.py

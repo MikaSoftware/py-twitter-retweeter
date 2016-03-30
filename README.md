@@ -12,7 +12,7 @@ A python script which retweets tweet with specific hashtags to a twitter account
 * virtualenv 12.1.1+
 
 ## Dependencies
-* tweepy 3.4.0
+* tweepy 3.5.0
 
 ## Build Instructions
 1. First clone the project locally and then go into the directory
@@ -58,9 +58,27 @@ A python script which retweets tweet with specific hashtags to a twitter account
 6. Bugfix an error with **tweepy** by reading the instructions here: https://github.com/tweepy/tweepy/issues/615
 
 
+7. Go to http://apps.twitter.com and create an app. Once finished, be sure to make a copy of the following data:
+  * Consumer Key
+  * Consumer Secret
+  * Access Token
+  * Access Secret
+
+
+8. Go into the source folder and change the **secret_settings.py** file by entering the values you saved from step (5).
+
+  ```bash
+  cp src/secret_settings_example.py src/secret_settings.py
+  vi src/secret_settings.py
+  ```
+
+9. Replace the values with your *Twitter API Keys/Tokens*.
+
+
 
 ### Usage
 To run the application, simply enter the following line:
+
   ```bash
   python retweeterbot.py
   ```
